@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/category_screen.dart';
-import 'screens/meal_detaI.dart';
+import 'screens/meal_detaiI_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +22,14 @@ class MyApp extends StatelessWidget {
         CategoryMealsScreen.routename: (ctx) => CategoryMealsScreen(),
         MealDetailsScreen.routeName: (ctx) => MealDetailsScreen()
       },
-      on
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+        // return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+        // // if any route is not created and try open that screen than ongenerate route take user to another route
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+      },
     );
   }
 }
